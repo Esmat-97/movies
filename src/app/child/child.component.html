@@ -1,0 +1,14 @@
+
+<div class="card h-100">
+    <img [src]=" IMGPATH+getitem.poster_path" class="card-img-top w-75 h-75" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{getitem.title}}</h5>
+      <div class="card-text">{{getitem.id}}</div>
+      <div class="card-text">{{getitem.release_date | date :'fullDate'}}</div>
+      <div class="card-text">{{getitem.original_language}}</div>
+      <button (click)="handleDelete(getitem.id)">click</button>
+      <button (click)="handleNavigate(getitem.id)">press</button>
+    
+     
+    </div>
+  </div>

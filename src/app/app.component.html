@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div class="row row-cols-3 row-cols-md-3 g-4">
+  @for( x of data ; track data.id){
+  <div class="col">
+  <app-child [getitem]="x" (mody)="recive($event)"></app-child>
+  </div>
+}
+</div>
+<app-footer></app-footer>
+
+
+<router-outlet />
