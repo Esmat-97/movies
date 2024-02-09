@@ -6,8 +6,8 @@
       <div class="card-text">{{getitem.id}}</div>
       <div class="card-text">{{getitem.release_date | date :'fullDate'}}</div>
       <div class="card-text">{{getitem.original_language}}</div>
-      <button (click)="handleDelete(getitem.id)">click</button>
-      <button (click)="handleNavigate(getitem.id)">press</button>
+      <button   class="btn btn-success" (click)="handleDelete(getitem.id)">delete</button>
+      <button class="btn btn-secondary" (click)="handleNavigate(getitem.id)">press</button>
     
      
     </div>

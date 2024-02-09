@@ -16,12 +16,13 @@ import { Router } from '@angular/router';
 })
 export class ChildComponent {
   IMGPATH :string = 'https://image.tmdb.org/t/p/w1280';
-  @Input() getitem : any;
 
+  @Input() getitem : any;
   @Output() mody=new EventEmitter<string>();
-  handleDelete(x:string){
- console.log(x);
-this.mody.emit(x)
+
+  handleDelete(id:string){
+console.log(id)
+this.mody.emit(id);
   }
 
 constructor(private router:Router){}
