@@ -21,21 +21,60 @@ export class HomeComponent {
   getting:any;
       
       data:any=[];
-      httpCliet=inject(HttpClient)
-    
+      filterdata:any=[];
+
+      constructor(private httpClient: HttpClient) {}
+
+
       ngOnInit(): void {
-       this.httpCliet.get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1')
-        .subscribe((w:any)=>{
-          console.log(w.results)
-          this.data=w.results;
-        })
+     this.getData()
+    
 }
 
 
+getData(): void {
+  this.httpClient.get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1')
+    .subscribe((w: any) => {
+      this.data = w.results;
+      this.filterdata = w.results;
+
+      console.log(this.filterdata)
+
+    });
+  }
+
+
+   
+  handleInput(value:any):void{
+    
+    console.log(value);
+    alert(this.filterdata)
+      if(value !==" "){
+      this.filterdata == this.data                           
+                  }
+     else{
+                                           
+        this.filterdata = this.data.filter((item:any)=>item.title.includes(value) )
+   }
+ 
+ 
+                                           }    
+
+
+
+
+   
+                                   
+                                                                                                         
 recive(id:string){
 console.log(id);
 this.getting=  this.data.find((item:any)=>item.id== id);
 const index=  this.data.indexOf(this.getting)
 this.data.splice(index,1);
 }
-}
+
+
+
+                                        
+                }
+
