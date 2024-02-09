@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
-import { inject } from '@angular/core';
+
 import { NgFor } from '@angular/common';
 
 import { HeaderComponent } from '../header.component';
 import { FooterComponent } from '../footer.component';
 import { ChildComponent } from '../child/child.component';
-
+import { GtMovieService } from '../services/gt-movie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,33 +23,29 @@ export class HomeComponent {
       data:any=[];
       filterdata:any=[];
 
-      constructor(private httpClient: HttpClient) {}
+      
+
+      constructor(private  gtMovie:GtMovieService,private  router:Router){}
 
 
-      ngOnInit(): void {
-     this.getData()
-    
-}
+      ngOnInit(){
+      
+        this.gtMovie.movieList().subscribe(  (res:any)=>{ 
+           this.filterdata=res.results;
+          this.data= res.results; 
+         
+      console.log(this.filterdata); 
+      
+      })
+      
+      }
 
-
-getData(): void {
-  this.httpClient.get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1')
-    .subscribe((w: any) => {
-      this.data = w.results;
-      this.filterdata = w.results;
-
-      console.log(this.filterdata)
-
-    });
-  }
-
-
+  
    
   handleInput(value:any):void{
-    
+
     console.log(value);
-    alert(this.filterdata)
-      if(value !==" "){
+      if(value ==" "){
       this.filterdata == this.data                           
                   }
      else{
@@ -70,7 +66,7 @@ recive(id:string){
 console.log(id);
 this.getting=  this.data.find((item:any)=>item.id== id);
 const index=  this.data.indexOf(this.getting)
-this.data.splice(index,1);
+this.filterdata.splice(index,1);
 }
 
 
