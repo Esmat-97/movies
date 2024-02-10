@@ -4,7 +4,7 @@
 <div class="row row-cols-3 row-cols-md-3 g-4">
   @for (  x of filterdata ; track filterdata.id){
   <div class="col">
-  <app-child [getitem]="x" (mody)="recive($event)"  (carting)=" addToCart($event)"></app-child>
+  <app-child [getitem]="x" (mody)="recive($event)"  (carting)="add($event)"></app-child>
   </div>
   }
 </div>

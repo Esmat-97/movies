@@ -53,13 +53,13 @@ export class HomeComponent {
 
 
 
-      addToCart(y:string) {
-        console.log(y);
+   add(y:string) {
+    
+  console.log(y);
 this.itemtocart=  this.data.find((ele:any)=>ele.id == y);
-console.log(this.itemtocart)
-
-        this.cartService.addToCart(this.itemtocart);
-        window.alert('Product added to cart');
+console.log(this.itemtocart);
+this.cartService.addToCart(this.itemtocart);
+    alert('Product added to cart');
       }
 
 

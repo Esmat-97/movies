@@ -27,9 +27,9 @@ this.mody.emit(id);
   }
 
 
-  addToCart(y:string){
-    console.log(y)
-    this.mody.emit(y);
+  choose(z:string){
+    console.log(z)
+    this.carting.emit(z);
   }
 
 constructor(private router:Router){}

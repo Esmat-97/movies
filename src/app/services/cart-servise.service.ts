@@ -7,9 +7,9 @@ export class CartServiseService {
 
   
 
-  items :any[]= [];
+  items :any= [];
   ngOnInit(){
-    console.log(this.items)
+  
   }
 
   addToCart(itemtocart:any) {
