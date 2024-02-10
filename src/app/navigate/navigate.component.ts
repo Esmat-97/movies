@@ -14,7 +14,11 @@ import { inject } from '@angular/core';
 })
 export class NavigateComponent {
 constructor(private activatedRoute:ActivatedRoute){}
+
+IMGPATH :string = 'https://image.tmdb.org/t/p/w1280';
+
 data:any=[];
+iti:any=[];
 httpCliet=inject(HttpClient)
 
 ngOnInit(){
@@ -22,7 +26,10 @@ ngOnInit(){
   .subscribe((w:any)=>{
     console.log(w.results)
     this.data=w.results;
- console.log( this.activatedRoute.snapshot.params['id'])
+   const id= this.activatedRoute.snapshot.params['id']
+   this.iti=this.data.find((iti:any)=>iti.id == `${id}`)
+
+ console.log( this.iti)
 })
 }
 }

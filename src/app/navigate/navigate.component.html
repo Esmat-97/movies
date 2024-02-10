@@ -1,1 +1,27 @@
 
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+   
+    <div class="col">
+
+      <div class="card h-100">
+        <img [src]="IMGPATH+iti.poster_path" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{iti.title}}</h5>
+          <p class="card-text">{{iti.id}}</p>
+          <p class="card-text">{{iti.original_title}}</p>
+          <p class="card-text">{{iti. popularity}}</p>
+          <p class="card-text">{{iti.original_language}}</p>
+          <p class="card-text">{{iti.release_date}}</p>
+          <p class="card-text">{{iti.id}}</p>
+          @if(iti.adult){
+            <p class="card-text">for adults</p>  
+          }
+          <p class="card-text">{{iti.overview}}</p>   
+        </div>
+      </div>
+
+    </div>
+
+</div>
+ 
