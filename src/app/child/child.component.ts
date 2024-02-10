@@ -19,10 +19,17 @@ export class ChildComponent {
 
   @Input() getitem : any;
   @Output() mody=new EventEmitter<string>();
+  @Output() carting=new EventEmitter<string>();
 
   handleDelete(id:string){
 console.log(id)
 this.mody.emit(id);
+  }
+
+
+  addToCart(y:string){
+    console.log(y)
+    this.mody.emit(y);
   }
 
 constructor(private router:Router){}

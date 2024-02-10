@@ -6,13 +6,14 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CartComponent } from './cart/cart.component';
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,HomeComponent,ContactComponent,AboutComponent,LoginComponent,RegisterComponent],
+  imports: [RouterOutlet,RouterLink,HomeComponent,ContactComponent,AboutComponent,LoginComponent,RegisterComponent,CartComponent],
   template: `
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -26,7 +27,7 @@ import { Output } from '@angular/core';
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" routerLink="cart" href="#">cart</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
