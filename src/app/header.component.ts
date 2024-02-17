@@ -30,11 +30,6 @@ import { Output } from '@angular/core';
         <li class="nav-item">
           <a class="nav-link" routerLink="cart" href="#">cart</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#" routerLink="" >
-          logout
-          </a>
-        </li>
 
        <button (click)="do()">logout </button>
       </ul>
