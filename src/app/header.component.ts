@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { EventEmitter } from '@angular/core';
+import { AuthService } from './services/auth.service';
 import { Output } from '@angular/core';
 
 @Component({
@@ -24,25 +25,18 @@ import { Output } from '@angular/core';
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" routerLink="login" aria-current="page" href="#">login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="cart" href="#">cart</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+        <li class="nav-item ">
+          <a class="nav-link" href="#" routerLink="" >
+          logout
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
+       <button (click)="do()">logout </button>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" (keyup)="handleInput($event)" placeholder="Search" aria-label="Search">
@@ -66,7 +60,12 @@ this.searchValue=e.target.value;
 this.moh.emit(this.searchValue)
   }
 
+constructor(private authservice:AuthService ,private router:Router){}
 
+do(){
+this.authservice.logout();
+this.router.navigate(['/login']);
+}
 
 
 }

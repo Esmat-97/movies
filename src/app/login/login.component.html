@@ -1,1 +1,25 @@
-<p>login works!</p>
+
+<h1>login</h1>
+<form #main="ngForm" (ngSubmit)="handleSubmit(main)">
+
+
+
+    <input type="text" name="username"  placeholder="username"  required  #name="ngModel"  ngModel>
+    @if(name.invalid && name.touched){
+    @if(name.errors?.['required']){
+      <span> the name is required </span>
+        }
+    }
+    
+    <br>
+    
+    <input type="password" name="password"  placeholder="password"  required  #password="ngModel"  ngModel>
+    @if(password.invalid && password.touched){
+    @if(password.errors?.['required']){
+      <span>  the password is required   </span>
+        }
+    }
+        
+    
+<input type="submit" name="submit" value="submit" >
+    </form>
