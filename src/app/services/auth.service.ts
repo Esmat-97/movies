@@ -11,25 +11,26 @@ export class AuthService {
     password:""
   }
 
+   token :any = {
+    username:'mohamed',
+    password:'111'
+  };
 
-  storedToken :any={
-    username:"",
-    password:""
-  }
   constructor(private router:Router) { }
 
   openlocal(): void {
-    // Assuming you have an API call here to authenticate user and receive token
-    const token :any = {
-      username:'mohamed',
-      password:'111'
-    };
+   
+    localStorage.setItem('token', JSON.stringify(this.token))    
+   
+      if ( this.token.username === this.loginFormValues.username && this.token.password === this.loginFormValues.password) {
+          this.router.navigate(['/']);
 
-    localStorage.setItem('token', JSON.stringify(token))    //login
-
-    this.router.navigate(['/']);
-
+      }
+  
   }
+
+
+
 
   logout(): void {
     localStorage.removeItem('token');          //header
@@ -39,31 +40,20 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return  localStorage.getItem('token') ? true : false ;      //
+
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
-
-
-  /*          */
 
 
 
   getLoginFormValues(formValues:any){
     this.loginFormValues = formValues
     console.log(this.loginFormValues);
-    return this.loginFormValues;                //
+    return this.loginFormValues;                //  from login
     
   }
 
-  matchTokenWithFormValues(): boolean {
-    this.storedToken = this.getToken();
-    if ( this.storedToken.username === this.loginFormValues.username && this.storedToken.password === this.loginFormValues.password) {
-      return true;
-    }
-    return false; // No stored token found
-  }
+
+  
 }
 
