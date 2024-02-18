@@ -4,8 +4,6 @@ import { RouterLink } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { EventEmitter } from '@angular/core';
 import { AuthService } from './services/auth.service';
@@ -14,7 +12,7 @@ import { Output } from '@angular/core';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,HomeComponent,ContactComponent,AboutComponent,LoginComponent,RegisterComponent,CartComponent],
+  imports: [RouterOutlet,RouterLink,HomeComponent,ContactComponent,AboutComponent,CartComponent],
   template: `
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -58,7 +56,6 @@ this.moh.emit(this.searchValue)
 constructor(private authservice:AuthService ,private router:Router){}
 
 do(){
-this.authservice.logout();
 this.router.navigate(['/login']);
 }
 

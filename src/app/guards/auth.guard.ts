@@ -14,12 +14,12 @@ export class AuthGuard implements CanActivate {
     
    
     if (authService.isLoggedIn()) {
-      // If user is logged in, allow access
+      // If user is logged in, allow accesss
       return true;
     } else {
      
         // If form values do not match stored token, redirect to login page
-        this.router.navigate(['/login']);
+        this.router.navigate(['/sign']);
         return false;
       }
     }

@@ -6,34 +6,12 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  loginFormValues:any={
-    username:"",
-    password:""
-  }
-
-   token :any = {
-    username:'mohamed',
-    password:'111'
-  };
-
   constructor(private router:Router) { }
-
-  openlocal(): void {
-   
-    localStorage.setItem('token', JSON.stringify(this.token))    
-   
-      if ( this.token.username === this.loginFormValues.username && this.token.password === this.loginFormValues.password) {
-          this.router.navigate(['/']);
-
-      }
-  
-  }
-
-
 
 
   logout(): void {
-    localStorage.removeItem('token');          //header
+
+  return  localStorage.removeItem('token');          //header
   }
 
 
@@ -46,12 +24,7 @@ export class AuthService {
 
 
 
-  getLoginFormValues(formValues:any){
-    this.loginFormValues = formValues
-    console.log(this.loginFormValues);
-    return this.loginFormValues;                //  from login
-    
-  }
+ 
 
 
   
